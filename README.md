@@ -6,18 +6,6 @@ Two design patterns are of importance here:
 * A [Builder pattern](https://en.wikipedia.org/wiki/Builder_pattern), which is used to build up state and then finally emit.
 * A [Visitor pattern](https://en.wikipedia.org/wiki/Visitor_pattern), which is used to abstract the process of visiting a data structure such as abstract syntax tree (AST). The only input you have to provide is what action to perform at each node.
 
-### Workshop
-
-The repository contains a stub that parses a javascript file and visits each function. However, we need to calculate the following properties:
-
-* **ParameterCount**: The number of parameters for functions
-* **SimpleCyclomaticComplexity**: The number of if statements/loops + 1
-* **MaxConditions**: The max number of conditions in one statement.
-* **PackageComplexity**: The number of imports used by code.
-* **MaxNestingDepth**: The max depth of scopes (nested ifs, loops, etc) -- this one is hard, only expect a few to get to do finish this one.
-
-For live example of a code complexity calculator, see [jscomplexity](http://jscomplexity.org/).
-
 ### Esprima
 
 Instead of building a scanner and parser by hand like we [demonstrated previously](https://github.com/CSC-DevOps/Parsing). We will use an existing library, [esprima](http://esprima.org/), to parse code and create a static analyzer for basic code complexity metrics.
@@ -49,4 +37,26 @@ Will appear as following, and:
 
 
 **Can be [interacted with here](http://esprima.org/demo/parse.html?code=function%20functionName(%20node%20)%0A%7B%0A%09if(%20node.id%20)%0A%09%7B%0A%09%09return%20node.id.name%3B%0A%09%7D%0A%09return%20%22anon%20function%20%40%22%20%2B%20node.loc.start.line%3B%0A%7D)**.
+
+### Workshop
+
+The repository contains a stub that parses a javascript file and visits each function. 
+
+1. Run the program and print all the tokens in an ast.
+
+2. Do a simple calculation
+
+   * **ParameterCount**: The number of parameters for functions
+   * **PackageComplexity**: The number of imports used by code.
+
+3. Statements inside a function.
+
+   * **SimpleCyclomaticComplexity**: The number of if statements/loops + 1. For live example of a code complexity calculator, see [jscomplexity](http://jscomplexity.org/).
+
+4. Using multiple visitors.
+
+   * **MaxConditions**: The max number of conditions in one statement.
+   * **MaxNestingDepth**: The max depth of scopes (nested ifs, loops, etc) -- this one is hard, only expect a few to get to do finish this one.
+
+
 

@@ -43,6 +43,10 @@ Will appear as following, and:
 The repository contains a stub that parses a javascript file and visits each function. 
 
 1. Run the program and print all the tokens in an ast.
+   ```
+      npm install
+      node analysis.js
+   ```
 
 2. Do a simple calculation
 

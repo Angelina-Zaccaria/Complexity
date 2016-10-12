@@ -50,14 +50,14 @@ The repository contains a stub that parses a javascript file and visits each fun
 
 2. Do a simple calculation
 
-   * **ParameterCount**: The number of parameters for functions
-   * **PackageComplexity**: The number of imports used by code.
+   * **String Usage**: How many string literals are used in file? (FileBuilder)
+   * **ParameterCount**: The number of parameters for functions (FunctionBuilder)
 
-3. Statements inside a function.
+3. Using multiple visitors.
 
-   * **SimpleCyclomaticComplexity**: The number of if statements/loops + 1. For live example of a code complexity calculator, see [jscomplexity](http://jscomplexity.org/).
+   * **SimpleCyclomaticComplexity**: The number of if statements/loops + 1.
 
-4. Using multiple visitors.
+4. Advanced (using parents/etc):
 
    * **MaxConditions**: The max number of conditions in one statement.
    * **MaxNestingDepth**: The max depth of scopes (nested ifs, loops, etc) -- this one is hard, only expect a few to get to do finish this one.

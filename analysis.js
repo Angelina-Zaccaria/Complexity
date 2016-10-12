@@ -23,10 +23,12 @@ function main()
 
 }
 
+
+
 var builders = {};
 
 // Represent a reusable "class" following the Builder pattern.
-function ComplexityBuilder()
+function FunctionBuilder()
 {
 	this.StartLine = 0;
 	this.FunctionName = "";
@@ -57,21 +59,24 @@ function ComplexityBuilder()
 	}
 };
 
-// A function following the Visitor pattern. Provide current node to visit and function that is evaluated at each node.
-function traverse(object, visitor) 
+// A builder for storing file level information.
+function FileBuilder()
 {
-    var key, child;
+	this.FileName = "";
+	// Number of strings in a file.
+	this.Strings = 0;
+	// Number of imports in a file.
+	this.ImportCount = 0;
 
-    visitor.call(null, object);
-
-    for (key in object) {
-        if (object.hasOwnProperty(key)) {
-            child = object[key];
-            if (typeof child === 'object' && child !== null) {
-                traverse(child, visitor);
-            }
-        }
-    }
+	this.report = function()
+	{
+		console.log (
+			( "{0}\n" +
+			  "~~~~~~~~~~~~\n"+
+			  "ImportCount {1}\t" +
+			  "Strings {2}\n"
+			).format( this.FileName, this.ImportCount, this.Strings ));
+	}
 }
 
 // A function following the Visitor pattern.
@@ -94,37 +99,25 @@ function traverseWithParents(object, visitor)
     }
 }
 
-
-// A function following the Visitor pattern but allows canceling transversal if visitor returns false.
-function traverseWithCancel(object, visitor)
-{
-    var key, child;
-
-    if( visitor.call(null, object) )
-    {
-	    for (key in object) {
-	        if (object.hasOwnProperty(key)) {
-	            child = object[key];
-	            if (typeof child === 'object' && child !== null) {
-	                traverseWithCancel(child, visitor);
-	            }
-	        }
-	    }
- 	 }
-}
-
 function complexity(filePath)
 {
 	var buf = fs.readFileSync(filePath, "utf8");
 	var ast = esprima.parse(buf, options);
 
 	var i = 0;
+
+	// A file level-builder:
+	var fileBuilder = new FileBuilder();
+	fileBuilder.FileName = filePath;
+	fileBuilder.ImportCount = 0;
+	builders[fileBuilder.filePath] = fileBuilder;
+
 	// Tranverse program with a function visitor.
 	traverseWithParents(ast, function (node) 
 	{
 		if (node.type === 'FunctionDeclaration') 
 		{
-			var builder = new ComplexityBuilder();
+			var builder = new FunctionBuilder();
 
 			builder.FunctionName = functionName(node);
 			builder.StartLine    = node.loc.start.line;
@@ -159,17 +152,7 @@ function childrenLength(node)
 // Helper function for checking if a node is a "decision type node"
 function isDecision(node)
 {
-	if( node.type == 'IfStatement' )
-	{
-		// Don't double count else/else if
-		if( node.parent && node.parent.type == 'IfStatement' && node.parent["alternate"] )
-		{
-			return false;
-		}
-		return true;
-	}
-
-	if( node.type == 'ForStatement' || node.type == 'WhileStatement' ||
+	if( node.type == 'IfStatement' || node.type == 'ForStatement' || node.type == 'WhileStatement' ||
 		 node.type == 'ForInStatement' || node.type == 'DoWhileStatement')
 	{
 		return true;

@@ -110,7 +110,7 @@ function complexity(filePath)
 	var fileBuilder = new FileBuilder();
 	fileBuilder.FileName = filePath;
 	fileBuilder.ImportCount = 0;
-	builders[fileBuilder.filePath] = fileBuilder;
+	builders[filePath] = fileBuilder;
 
 	// Tranverse program with a function visitor.
 	traverseWithParents(ast, function (node) 

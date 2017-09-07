@@ -1,5 +1,7 @@
 # Complexity
 
+![build](https://travis-ci.org/CSC-510/Complexity.svg?branch=master)
+
 In this workshop, you'll be implementing simple algorithms for checking basic properties of code complexity.
 
 Two design patterns are of importance here:

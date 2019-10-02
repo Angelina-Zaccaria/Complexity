@@ -55,8 +55,8 @@ The repository contains a stub that parses a javascript file and visits each fun
 
 2. Do a simple calculation
 
-   * **String Usage**: How many string literals are used in file? (FileBuilder)
    * **ParameterCount**: The number of parameters for functions (FunctionBuilder)
+   * **String Usage**: How many string literals are used in file? (FileBuilder)
 
 3. Using multiple visitors.
 

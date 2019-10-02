@@ -64,7 +64,7 @@ The repository contains a stub that parses a javascript file and visits each fun
 
 4. Advanced (using parents/etc):
 
-   * **MaxConditions**: The max number of conditions in one statement.
+   * **MaxConditions**: The max number of condition predicates (expressions seperated by `||`, `&&`) in an if statement.
    * **MaxNestingDepth**: The max depth of scopes (nested ifs, loops, etc) -- this one is hard, only expect a few to get to do finish this one.
 
 

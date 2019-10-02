@@ -264,7 +264,7 @@ remainder.toString() + " seconds";
 				      && n != '_' && n != '@' && n != '-' && n != '.' )
 				    {
 				      window.alert("Only Alphanumeric are allowed.\nPlease re-enter the value.");
-				      cfield.value = '';
+				      cfield.value = '⠀';
 				      cfield.focus();
 				    }
 				    cfield.value =  cfield.value.toUpperCase();

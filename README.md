@@ -1,11 +1,6 @@
 # Complexity
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/CSC-510/Complexity.svg)](https://greenkeeper.io/)
-[![build](https://travis-ci.org/CSC-510/Complexity.svg?branch=master)](https://travis-ci.org/CSC-510/Complexity)
-[![dependencies Status](https://david-dm.org/CSC-510/Complexity/status.svg)](https://david-dm.org/CSC-510/Complexity)
-[![devDependencies Status](https://david-dm.org/CSC-510/Complexity/dev-status.svg)](https://david-dm.org/CSC-510/Complexity?type=dev)
-
-In this workshop, you'll be implementing simple algorithms for checking basic properties of code complexity.
+In this lab, you'll be implementing simple algorithms for checking basic properties of code complexity.
 
 Two design patterns are of importance here:
 * A [Builder pattern](https://en.wikipedia.org/wiki/Builder_pattern), which is used to build up state and then finally emit.
@@ -13,7 +8,7 @@ Two design patterns are of importance here:
 
 ### Esprima
 
-Instead of building a scanner and parser by hand like we [demonstrated previously](https://github.com/CSC-DevOps/Parsing). We will use an existing library, [esprima](http://esprima.org/), to parse code and create a static analyzer for basic code complexity metrics.
+We will use an existing library, [esprima](http://esprima.org/), to parse code and create a static analyzer for basic code complexity metrics.
 
 ##### Video
 If you have not already watched this video, you can get more background about Esprima here:
@@ -43,7 +38,7 @@ Will appear as following, and:
 
 **Can be [interacted with here](http://esprima.org/demo/parse.html?code=function%20functionName(%20node%20)%0A%7B%0A%09if(%20node.id%20)%0A%09%7B%0A%09%09return%20node.id.name%3B%0A%09%7D%0A%09return%20%22anon%20function%20%40%22%20%2B%20node.loc.start.line%3B%0A%7D)**.
 
-### Workshop
+### Lab Activities:
 
 The repository contains a stub that parses a javascript file and visits each function. 
 
@@ -53,19 +48,19 @@ The repository contains a stub that parses a javascript file and visits each fun
       node analysis.js
    ```
 
-2. Do a simple calculation
+2. Do a simple calculation (2 Points Each) 
 
-   * **ParameterCount**: The number of parameters for functions (FunctionBuilder)
-   * **String Usage**: How many string literals are used in file? (FileBuilder)
+   a) **ParameterCount**: The number of parameters for functions (FunctionBuilder)
+   b) **String Usage**: How many string literals are used in file? (FileBuilder)
 
-3. Using multiple visitors.
+3. Using multiple visitors (3 Points Each) 
 
-   * **SimpleCyclomaticComplexity**: The number of if statements/loops + 1.
+   a) **SimpleCyclomaticComplexity**: The number of if statements/loops + 1.
+   b) **MaxConditions**: The max number of condition predicates (expressions seperated by `||`, `&&`) in an if statement.
 
-4. Advanced (using parents/etc):
+4. Advanced (2 Extra Points)  
 
-   * **MaxConditions**: The max number of condition predicates (expressions seperated by `||`, `&&`) in an if statement.
-   * **MaxNestingDepth**: The max depth of scopes (nested ifs, loops, etc) -- this one is hard, only expect a few to get to do finish this one.
+   a) **MaxNestingDepth**: The max depth of scopes (nested ifs, loops, etc) -- this one is hard, only expect a few to get to do finish this one (using parents/etc).
 
 
 

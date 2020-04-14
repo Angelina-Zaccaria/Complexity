@@ -52,12 +52,14 @@ The repository contains a stub that parses a javascript file and visits each fun
    a) **ParameterCount**: The number of parameters for functions (FunctionBuilder)
    b) **String Usage**: How many string literals are used in file? (FileBuilder)
 
-3. Using multiple visitors (3 Points Each) 
+3. Using multiple visitors (2 Points Each) 
 
    a) **SimpleCyclomaticComplexity**: The number of if statements/loops + 1.
    b) **MaxConditions**: The max number of condition predicates (expressions seperated by `||`, `&&`) in an if statement.
 
-4. Advanced (2 Extra Points)  
+4. Check build status on Travis-CI when committing each new function. Submit a screenshot of the final build. (2 Points) 
+
+5. Advanced (2 Extra Points)  
 
    a) **MaxNestingDepth**: The max depth of scopes (nested ifs, loops, etc) -- this one is hard, only expect a few to get to do finish this one (using parents/etc).
 
